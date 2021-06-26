@@ -1,0 +1,86 @@
+﻿@model Bolnica.ViewModels.DoktorImeViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Листа на доктори</h1>
+
+<p>
+    <a asp-action="Create">Додади нов доктор</a>
+</p>
+<form asp-controller="Doktors" asp-action="Index" method="get">
+    <p>
+        Име и Презиме: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Филтрирај" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Име и презиме
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doktors[0].Zvanje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doktors[0].Vozrast)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doktors[0].DataVrabotuvanje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doktors[0].Plata)
+            </th>
+            <th>
+                Пациенти
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Doktors)
+        {
+            <tr>
+                <td>
+                    @if (item.ProfilnaSlika != null)
+                    {
+                        <img src="~/images/@item.ProfilnaSlika"
+                             class="rounded-circle"
+                             height="40" width="40"
+                             asp-append-version="true" />
+                    }
+                    @item.FullName
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zvanje)
+                </td>
+                <td>
+                    @if (item.Vozrast != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Vozrast)<span> год.</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataVrabotuvanje)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plata)
+                </td>
+                <td>
+                    @foreach (var pacient in item.Pacients)
+                    {
+                        <a asp-controller="Pacients" asp-action="Details" asp-route-id="@pacient.PacientId"> @pacient.Pacient.FullName </a> <br />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Измени</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Избриши</a> |
+                    <a asp-action="Pacienti" asp-route-id="@item.Id">Пациенти</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+﻿@model Bolnica.Models.Pacient
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали за пациентот</h1>
+
+<div>
+    <h4>Пациент</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrethodniBolesti)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrethodniBolesti)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PriemenDatum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PriemenDatum)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vozrast)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vozrast)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Измени</a> |
+    <a asp-action="Index">Назад до листата</a>
+</div>

@@ -1,0 +1,39 @@
+﻿@model Bolnica.Models.LekuvanPacient
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Избриши</h1>
+
+<h3>Дали сте сигурни дека сакате да го избришете лекот?</h3>
+<div>
+    <h4>Лекуван пациент</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Доктор
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Doktor.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            Пациент
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pacient.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            Лек
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lek)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Избриши" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад до листата</a>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+﻿@model Bolnica.Models.LekuvanPacient
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Додади лек за пациент</h1>
+
+<h4>Лекуван пациент</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DoktorId" class="control-label">Доктор</label>
+                <select asp-for="DoktorId" class="form-control" asp-items="ViewBag.DoktorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacientId" class="control-label">Пациент</label>
+                <select asp-for="PacientId" class="form-control" asp-items="ViewBag.PacientId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lek" class="control-label">Лек</label>
+                <input asp-for="Lek" class="form-control" />
+                <span asp-validation-for="Lek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додади" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад до листата</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

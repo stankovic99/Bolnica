@@ -1,0 +1,51 @@
+﻿@model Bolnica.Models.Pacient
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Избриши</h1>
+
+<h3>Дали сте сигурни дека сакате да го избришете пациентот?</h3>
+<div>
+    <h4>Пациент</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrethodniBolesti)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrethodniBolesti)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PriemenDatum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PriemenDatum)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vozrast)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vozrast)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Избриши" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад до листата</a>
+    </form>
+</div>

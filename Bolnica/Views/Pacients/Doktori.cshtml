@@ -1,0 +1,31 @@
+﻿@model Bolnica.Models.Pacient
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Листа на пациенти по доктор</h1>
+<h3>Пациент: @ViewData["Pacient"]</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Име и презиме
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Doktors)
+        {
+            <tr>
+                <td>
+                    @item.Doktor.FullName
+                </td>
+                <td>
+                    <a asp-action="Lekovi" asp-route-id="@item.Id">Препишан лек</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

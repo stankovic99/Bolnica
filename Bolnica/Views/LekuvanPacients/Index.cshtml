@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Bolnica.Models.LekuvanPacient>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Листа на лекови за пациенти</h1>
+
+<p>
+    <a asp-action="Create">Препиши лек</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Доктор
+            </th>
+            <th>
+                Пациент
+            </th>
+            <th>
+                Лек
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doktor.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pacient.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lek)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Измени</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Избриши</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,75 @@
+﻿@model Bolnica.Models.Doktor
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Избриши доктор</h1>
+
+<h3>Дали сте сигурни дека сакате да го избришете докторот?</h3>
+<div>
+    <h4>Доктор</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Zvanje)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Zvanje)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vozrast)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vozrast)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DataVrabotuvanje)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataVrabotuvanje)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Plata)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Plata)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProfilnaSlika)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProfilnaSlika)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pacients)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var pacient in Model.Pacients)
+            {
+                <a asp-controller="Pacients" asp-action="Details" asp-route-id="@pacient.PacientId">
+                    @pacient.Pacient.FullName
+                </a> <br />
+            }
+        </dd>
+
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Избриши" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад до листата</a>
+    </form>
+</div>

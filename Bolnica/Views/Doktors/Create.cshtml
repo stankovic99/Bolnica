@@ -1,0 +1,72 @@
+﻿@model Bolnica.ViewModels.DoktorViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Додади доктор</h1>
+
+<h4>Доктор</h4>
+<hr />
+<div class="row">
+    <div enctype="multipart/form-data" class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prezime" class="control-label"></label>
+                <input asp-for="Prezime" class="form-control" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zvanje" class="control-label"></label>
+                <input asp-for="Zvanje" class="form-control" />
+                <span asp-validation-for="Zvanje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vozrast" class="control-label"></label>
+                <input asp-for="Vozrast" class="form-control" />
+                <span asp-validation-for="Vozrast" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataVrabotuvanje" class="control-label"></label>
+                <input asp-for="DataVrabotuvanje" class="form-control" />
+                <span asp-validation-for="DataVrabotuvanje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plata" class="control-label"></label>
+                <input asp-for="Plata" class="form-control" />
+                <span asp-validation-for="Plata" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfilnaSlika" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="ProfilnaSlika" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                <span asp-validation-for="ProfilnaSlika" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додади" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад до листата</a>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}
